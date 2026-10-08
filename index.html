@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SA1NT">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/sa1nt-logo.png">
+<title>SA1NT — Motorcycle Parts Marketplace</title>
+<link rel="icon" type="image/png" href="assets/sa1nt-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20261009-mobile">
+</head>
+<body class="saint-locked">
+<!-- SA1NT SECURE ENTRY -->
+<section id="saintIntro" class="saint-intro" aria-label="SA1NT opening intro">
+  <div class="intro-noise"></div>
+  <div class="intro-scan"></div>
+  <div class="intro-slash intro-slash-a"></div><div class="intro-slash intro-slash-b"></div>
+  <div class="intro-hud intro-hud-a">SA1NT / SYSTEM BOOT</div>
+  <div class="intro-hud intro-hud-b">MOTORCYCLE PERFORMANCE / 001</div>
+  <div class="intro-logo-stage" id="introLogoStage" aria-hidden="true"></div>
+  <div class="intro-wordmark">SA1NT <span>MOTORCYCLE PARTS</span></div>
+  <div class="intro-tagline">BUILT FOR REAL RIDERS <i>//</i> BUILT FOR REAL MACHINES</div>
+  <div class="intro-progress"><i></i></div>
+  <button id="introSkip" class="intro-skip" type="button">SKIP INTRO <b>↗</b></button>
+</section>
+
+<section id="saintEntry" class="saint-entry" aria-label="SA1NT secure rider login">
+  <div class="entry-world"><div class="entry-depth entry-depth-a"></div><div class="entry-depth entry-depth-b"></div></div>
+  <div class="entry-scanlines"></div>
+  <div class="entry-orbit orbit-1"></div>
+  <div class="entry-orbit orbit-2"></div>
+
+  <div class="entry-top">
+    <div class="entry-brand"><img src="assets/sa1nt-logo.png" alt="SA1NT Motorcycle Parts logo"><small>RACING PERFORMANCE</small></div>
+    <div class="entry-status"><span></span> SYSTEM ONLINE&nbsp;&nbsp; /// &nbsp;&nbsp;SECURE RIDER ACCESS</div>
+  </div>
+
+  <div class="entry-layout">
+    <div class="entry-visual">
+      <div class="entry-kicker">MOTORCYCLE PERFORMANCE MARKETPLACE / 2026</div>
+      <h1>BUILT FOR<br><em>THE RACE.</em></h1>
+      <p>Enter the SA1NT marketplace. Discover performance hardware, manage your garage, track orders and build your machine around parts published by the SA1NT command center.</p>
+      <div class="entry-metrics">
+        <div><b>01</b><span>RACE-SPEC PARTS</span></div>
+        <div><b>02</b><span>LIVE INVENTORY</span></div>
+        <div><b>03</b><span>RIDER GARAGE</span></div>
+      </div>
+      <div class="entry-bike-wrap">
+        <div class="entry-ring"></div>
+        <img src="assets/bike.svg" alt="SA1NT motorcycle">
+        <div class="entry-readout readout-a">LEAN<br><b>42.8°</b></div>
+        <div class="entry-readout readout-b">RPM<br><b>11,840</b></div>
+        <div class="entry-readout readout-c">SECTOR<br><b>S2 / LIVE</b></div>
+      </div>
+    </div>
+
+    <div class="entry-card">
+      <div class="entry-card-head"><span>SA1NT ACCESS</span><span>AUTH / 001</span></div>
+      <div class="entry-logo"><img src="assets/sa1nt-logo.png" alt="SA1NT Motorcycle Parts"></div>
+      <h2>ENTER YOUR<br><i>GARAGE.</i></h2>
+      <p class="entry-sub">Sign in before entering the marketplace.</p>
+
+      <div class="entry-tabs">
+        <button class="active" type="button" data-entry-role="customer">RIDER</button>
+        <button type="button" data-entry-role="admin">ADMIN</button>
+      </div>
+
+      <form id="entryLoginForm">
+        <label>EMAIL<input id="entryEmail" type="email" autocomplete="email" placeholder="rider@sa1nt.com" required></label>
+        <label>PASSWORD<input id="entryPassword" type="password" autocomplete="current-password" placeholder="••••••••" required></label>
+        <button class="entry-submit" type="submit"><span id="entrySubmitText">ENTER MARKETPLACE</span><b>↗</b></button>
+      </form>
+
+      <button class="entry-google" id="entryGoogle" type="button"><strong>G</strong> SIGN IN WITH GOOGLE</button>
+      <button class="entry-create" id="entryCreate" type="button">CREATE NEW RIDER ACCOUNT</button>
+      <button class="entry-submit entry-continue" id="entrySessionContinue" type="button" hidden><span id="entrySessionText">CONTINUE TO MARKETPLACE</span><b>↗</b></button>
+      <div id="entryMessage" class="entry-message" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="entry-footer"><span>SA1NT MOTORCYCLE PERFORMANCE</span><span>PH / ONLINE</span><span>EST. 2026</span></div>
+</section>
+
+
+<div id="sceneTransition" class="scene-transition" aria-hidden="true">
+  <div class="scene-scan"></div>
+  <div class="scene-orbit"></div>
+  <div class="scene-copy">
+    <small>SA1NT / PERFORMANCE SYSTEM</small>
+    <strong id="sceneTitle">LOADING</strong>
+    <span id="sceneSub">INITIALIZING RACE CONTROL</span>
+  </div>
+</div>
+
+<div class="grain"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="#home">
+      <img class="brand-logo-img" src="assets/sa1nt-logo.png" alt="SA1NT Motorcycle Parts">
+      <span class="brand-copy"><span id="brandName">SA1NT</span><small id="brandTagline">RACING MARKETPLACE</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#deals">DEALS</a><a href="#merch">MERCH</a><a href="#garage">GARAGE</a><a href="#contact">CONTACT</a>
+    </nav>
+    <div class="header-tools">
+      <button class="tool admin-top-btn" id="adminTopBtn" type="button" hidden aria-label="Open admin">ADMIN <span>◆</span></button>
+      <button class="tool" id="accountBtn" aria-label="Open account">ACCOUNT</button>
+      <button class="tool" id="wishlistBtn" aria-label="Open wishlist">WISHLIST <b id="wishCount">0</b></button>
+      <button class="tool cart-btn" id="cartBtn" aria-label="Open cart">CART <b id="cartCount">0</b></button>
+      <button class="hamb" id="hamb" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="race-tag"><span></span> <b id="heroTagText">SA1NT PERFORMANCE MARKET / 001</b></div>
+    <h1 id="heroTitleText">RACE PARTS.<br><em id="heroAccentText">SMARTER.</em><br>FASTER.</h1>
+    <p>A marketplace-style motorcycle parts store where the admin controls the catalog and riders can search, compare, wishlist, order and track performance parts.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#shop">SHOP PARTS <b>↗</b></a>
+      <button class="btn outline" id="heroDeals">VIEW DEALS</button>
+    </div>
+    <div class="hero-data"><span><strong>01</strong> ADMIN CATALOG</span><span><strong>02</strong> RIDER CART</span><span><strong>03</strong> SALES ENGINE</span></div>
+  </div>
+  <div class="hero-bike">
+    <div class="speed-ring"></div>
+    <img id="heroBikeImage" src="https://paultan.org/image/2019/03/Yamaha-Y15ZR-V2-2019-BM-2.jpg" alt="Yamaha Y15ZR V2 racing motorcycle">
+    <div class="telemetry"><span>3D RACE TELEMETRY</span><strong id="heroStock">CATALOG READY</strong><small id="heroMetric">ADMIN-POWERED INVENTORY</small><div class="telemetry-grid"><b>LEAN <i id="lean">00°</i></b><b>SECTOR <i id="sector">01</i></b><b>RPM <i id="rpm">10.8K</i></b></div><div class="meter"><i></i></div></div>
+    <div class="hud hud-a">SA1NT // 001<br><b>MARKET CORE</b></div>
+    <div class="hud hud-b">AERO SYSTEM<br><b>ONLINE</b></div>
+    <div class="hud hud-c">LAP <b>∞</b> / LIVE</div>
+  </div>
+  <div class="hero-vertical">SA1NT // MOTORCYCLE PARTS MARKETPLACE SYSTEM</div>
+</section>
+
+<section class="race-strip">
+  <div>ADMIN CONTROL ◆ LIVE CATALOG ◆ SMART CART ◆ MERCH DROPS ◆ DEAL ENGINE ◆ ORDER TRACKING ◆ ADMIN CONTROL ◆ LIVE CATALOG ◆ SMART CART ◆ MERCH DROPS</div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-top">
+    <div><label>02 / LIVE MARKETPLACE</label><h2>THE <i>PARTS</i> GRID</h2></div>
+    <p>Products are added by the SA1NT admin. No fake inventory is preloaded.</p>
+  </div>
+  <div class="shopbar">
+    <div class="search"><span>⌕</span><input id="search" placeholder="SEARCH PARTS, BRAND, CATEGORY..."></div>
+    <div class="shop-actions">
+      <select id="sort">
+        <option value="featured">SORT: FEATURED</option>
+        <option value="low">PRICE: LOW → HIGH</option>
+        <option value="high">PRICE: HIGH → LOW</option>
+        <option value="new">NEWEST</option>
+        <option value="stock">STOCK AVAILABLE</option>
+      </select>
+      <button class="mini-btn" id="filterBtn">FILTERS</button>
+    </div>
+  </div>
+  <div class="filter-panel hidden" id="filterPanel">
+    <div class="filters" id="filters">
+      <button class="active" data-filter="All">ALL</button>
+      <button data-filter="Engine">ENGINE</button><button data-filter="Braking">BRAKING</button>
+      <button data-filter="Controls">CONTROLS</button><button data-filter="Protection">PROTECTION</button>
+      <button data-filter="Electrical">ELECTRICAL</button><button data-filter="Accessories">ACCESSORIES</button>
+    </div>
+    <label class="check"><input type="checkbox" id="inStockOnly"> IN STOCK ONLY</label>
+  </div>
+  <div class="market-meta"><span id="resultCount">0 PRODUCTS</span><span id="marketNotice">CATALOG CONTROLLED BY ADMIN</span></div>
+  <div class="products empty-state" id="products">
+    <div class="empty-inner"><span>01</span><h3>CATALOG WAITING</h3><p>The admin has not added any products yet.</p><button class="btn outline" id="emptyAccount">ADMIN ACCESS</button></div>
+  </div>
+</section>
+
+<section class="deal-section" id="deals" data-site-section="deals">
+  <div class="deal-copy">
+    <label>03 / SALES ENGINE</label>
+    <h2>DEALS THAT<br><i>MOVE.</i></h2>
+    <p>Admin can publish sale prices, promo codes, stock limits and featured products to compete like a modern marketplace.</p>
+    <div class="deal-cards">
+      <article><b>FLASH SALE</b><span>Time-limited discount campaigns</span></article>
+      <article><b>VOUCHERS</b><span>Promo codes and minimum-spend rules</span></article>
+      <article><b>LOW STOCK</b><span>Urgency labels based on inventory</span></article>
+    </div>
+  </div>
+  <div class="deal-board">
+    <span>LIVE SALES BOARD</span><strong id="dealProducts">0</strong><small>PRODUCTS AVAILABLE</small>
+    <div class="board-line"></div>
+    <div><b id="dealOrders">0</b><small>ORDERS</small><b id="dealRevenue">₱0</b><small>REVENUE</small></div>
+  </div>
+</section>
+
+<section class="section merch-section" id="merch" data-site-section="merch">
+  <div class="section-top"><div><label>04 / SA1NT LIFESTYLE</label><h2>MERCH <i>CATALOG.</i></h2></div><p>Official SA1NT rider apparel and lifestyle drops. Inventory is published by the admin command center.</p></div>
+  <div class="merch-catalog-banner"><strong>SA1NT MERCH / OFFICIAL RIDER GOODS</strong><span>APPAREL · HEADWEAR · ACCESSORIES · LIMITED DROPS</span></div>
+  <div class="merch-toolbar">
+    <div class="merch-filters" role="tablist" aria-label="Merch categories">
+      <button class="active" type="button" data-merch-filter="all">ALL</button>
+      <button type="button" data-merch-filter="apparel">APPAREL</button>
+      <button type="button" data-merch-filter="headwear">HEADWEAR</button>
+      <button type="button" data-merch-filter="accessories">ACCESSORIES</button>
+    </div>
+    <span id="merchCount">0 DROPS</span>
+  </div>
+  <div class="merch-grid" id="merchGrid"></div>
+  <div class="merch-empty" id="merchEmpty" hidden>
+    <div class="merch-empty-mark">S1</div><strong>MERCH DROP PENDING.</strong><span>Admin has not published a merch item yet.</span>
+  </div>
+</section>
+
+<section class="section garage" id="garage" data-site-section="garage">
+ <div class="section-top"><div><label>05 / RIDER CENTER</label><h2>YOUR <i>GARAGE.</i></h2></div><p>Customers get account history, wishlist, saved builds, vouchers and order tracking.</p></div>
+ <div class="garage-grid">
+  <article><span>01</span><b>WISHLIST</b><p>Save parts and come back when the price or stock changes.</p><button class="link" id="garageWishlist">OPEN WISHLIST →</button></article>
+  <article><span>02</span><b>MY ORDERS</b><p>Track purchases, payment status and delivery progress.</p><button class="link" id="garageOrders">TRACK ORDERS →</button></article>
+  <article><span>03</span><b>ADMIN COMMAND</b><p>Add products, images, pricing, stock, promos and manage sales.</p><button class="link" id="garageAdmin">ADMIN LOGIN →</button></article>
+ </div>
+</section>
+
+<section class="cta" id="contact" data-site-section="contact">
+ <div><label>06 / JOIN THE GRID</label><h2>RIDE WITH<br><i>SA1NT.</i></h2></div>
+ <form id="newsletter"><input type="email" placeholder="YOUR EMAIL ADDRESS" required><button>JOIN RIDER LIST ↗</button></form>
+</section>
+</main>
+
+<footer><div class="footer-brand"><img class="footer-logo-img" src="assets/sa1nt-logo.png" alt="SA1NT Motorcycle Parts"><b id="footerBrandName">SA1NT</b><small id="footerBrandTagline">RACING MARKETPLACE</small></div><p>© 2026 SA1NT MOTORCYCLE PERFORMANCE. MARKETPLACE EDITION.</p><div>IG / FB / TIKTOK</div></footer>
+
+<!-- AUTH / SESSION INFO -->
+
+
+<!-- PRODUCT -->
+<div class="modal" id="productModal"><div class="product-modal">
+ <button class="modal-close" data-close="productModal">×</button>
+ <div id="productDetail"></div>
+</div></div>
+
+<!-- CART -->
+<div class="drawer-overlay" id="cartOverlay"><aside class="drawer">
+ <div class="drawer-head"><b>YOUR BUILD / CART</b><button data-close-cart>×</button></div>
+ <div class="coupon-row"><input id="coupon" placeholder="PROMO CODE"><button id="applyCoupon">APPLY</button></div>
+ <div id="cartItems"></div><div class="cart-empty" id="cartEmpty">YOUR CART IS EMPTY.</div>
+ <div class="cart-bottom"><div class="totals"><span>SUBTOTAL <b id="cartSubtotal">₱0</b></span><span>DISCOUNT <b id="cartDiscount">₱0</b></span><span>TOTAL <b id="cartTotal">₱0</b></span></div><button class="btn primary full" id="checkout">PROCEED TO CHECKOUT</button></div>
+</aside></div>
+
+<!-- WISHLIST -->
+<div class="drawer-overlay" id="wishlistOverlay"><aside class="drawer">
+ <div class="drawer-head"><b>RIDER WISHLIST</b><button data-close-wish>×</button></div>
+ <div id="wishlistItems"></div><div class="cart-empty" id="wishEmpty">NO SAVED PARTS.</div>
+</aside></div>
+
+<!-- CHECKOUT -->
+<div class="modal" id="checkoutModal"><div class="checkout-panel">
+ <button class="modal-close" data-close="checkoutModal">×</button>
+ <div class="dash-head"><div><label>CHECKOUT / SECURE ORDER</label><h2>FINISH <i>RIDE.</i></h2></div></div>
+ <div class="checkout-grid">
+   <div><h3>DELIVERY</h3><input id="coName" placeholder="FULL NAME"><input id="coPhone" placeholder="PHONE NUMBER"><textarea id="coAddress" placeholder="DELIVERY ADDRESS"></textarea>
+   <select id="coPayment"><option value="COD">CASH ON DELIVERY</option><option value="GCASH">GCASH / E-WALLET</option><option value="CARD">CARD</option></select></div>
+   <div class="checkout-summary"><h3>ORDER SUMMARY</h3><div id="checkoutSummary"></div><div class="grand"><span>TOTAL</span><b id="checkoutTotal">₱0</b></div><button class="btn primary full" id="placeOrder">PLACE ORDER →</button></div>
+ </div>
+</div></div>
+
+<!-- ACCOUNT BAR -->
+<div class="account-pop" id="accountPop" aria-hidden="true">
+ <div class="account-pop-inner" id="accountPopInner">
+  <div class="account-head" id="accountHead">
+   <img class="account-avatar" id="accountAvatar" src="assets/sa1nt-logo.png" alt="Account">
+   <div class="account-ident"><b id="accountRoleName">Customer</b><small id="accountEmail">rider@sa1nt.com</small></div>
+   <span class="account-chevron">⌄</span>
+  </div>
+  <div class="account-nav" id="customerAccountNav">
+   <button type="button" data-account-action="profile"><span>♙</span>My Profile</button>
+   <button type="button" data-account-action="orders"><span>▱</span>My Orders</button>
+   <button type="button" data-account-action="cards"><span>▤</span>My Cards</button>
+   <button type="button" class="logout-account" data-action="logout"><span>↪</span>Logout</button>
+  </div>
+  <div class="account-nav account-admin" id="adminAccountNav" hidden>
+   <button type="button" class="logout-account" data-action="logout"><span>↪</span>Logout</button>
+  </div>
+  <div class="account-status"><i></i><span id="accountStatusText">CUSTOMER SESSION ACTIVE</span></div>
+  <div class="account-foot"><span>SA1NT / RIDER CONTROL</span><b id="accountTier">CUSTOMER</b></div>
+ </div>
+</div>
+
+<!-- PROFILE -->
+<div class="modal" id="profileModal"><div class="auth-panel" style="max-width:520px">
+ <button class="modal-close" data-close="profileModal">×</button>
+ <label>RIDER PROFILE</label><h2>MY <i>IDENTITY.</i></h2>
+ <div class="dash-grid" style="margin-top:20px">
+  <div class="dash-card"><small>ACCOUNT</small><h3 id="profileEmail">—</h3><p>Authenticated SA1NT rider</p></div>
+  <div class="dash-card"><small>STATUS</small><h3>ACTIVE</h3><p>One login session</p></div>
+ </div>
+</div></div>
+
+<!-- CARDS -->
+<div class="modal" id="cardsModal"><div class="auth-panel" style="max-width:560px">
+ <button class="modal-close" data-close="cardsModal">×</button>
+ <label>PAYMENT GARAGE</label><h2>MY <i>CARDS.</i></h2>
+ <div class="dash-card" style="margin-top:20px"><small>SECURE PAYMENT</small><h3>NO SAVED CARDS</h3><p>Add a payment method during checkout. Card details are not displayed here unless saved by the rider.</p></div>
+</div></div>
+
+<!-- LOGOUT LETTER -->
+<div class="logout-letter" id="logoutLetter" aria-hidden="true">
+ <div class="logout-letter-bg"></div><div class="logout-letter-grid"></div>
+ <div class="logout-letter-card">
+  <div class="logout-kicker">SA1NT / SESSION TERMINATED</div>
+  <img src="assets/sa1nt-logo.png" alt="SA1NT Motorcycle Parts">
+  <h2>RIDE <em>SAFE.</em></h2>
+  <div class="logout-quote"><span>BUILD THE MACHINE.</span><i>OWN THE RIDE.</i></div>
+  <div class="logout-quote-sub">RIDE WITH PURPOSE // RETURN READY</div>
+  <div class="logout-redline"></div>
+  <div class="logout-note">ACCOUNT SIGNED OUT / RETURNING TO SA1NT ENTRY</div>
+  <div class="logout-progress"><i></i></div>
+ </div>
+</div>
+
+<!-- CUSTOMER DASH -->
+<div class="modal" id="customerDashboard"><div class="dashboard customer-dash">
+ <div class="dash-head"><div><label>RIDER ACCOUNT</label><h2>MY <i>GARAGE.</i></h2></div><div class="dash-actions"><button class="mini-btn" data-action="logout">LOGOUT</button><button class="modal-close" data-close="customerDashboard">×</button></div></div>
+ <div class="dash-grid">
+  <div class="dash-card"><small>ACCOUNT</small><h3 id="dashEmail">rider@sa1nt.com</h3><p>SA1NT Rider</p></div>
+  <div class="dash-card"><small>WISHLIST</small><h3 id="dashWish">0</h3><p>Saved performance parts</p></div>
+  <div class="dash-card"><small>ORDERS</small><h3 id="dashOrders">0</h3><p>Purchase history</p></div>
+ </div>
+ <div class="dash-table"><div class="panel-title"><h3>RECENT ORDERS</h3><button class="mini-btn" id="refreshCustomer">REFRESH</button></div><div id="customerOrders"></div></div>
+</div></div>
+
+<!-- ADMIN -->
+<div class="modal admin-modal" id="adminDashboard"><div class="dashboard admin-dash admin-shell">
+ <aside class="admin-sidebar">
+  <div class="admin-brand"><img src="assets/sa1nt-logo.png" alt="SA1NT"><div><b>ADMIN PANEL</b><small>SA1NT MOTORCYCLE PARTS</small></div></div>
+  <div class="admin-side-nav">
+   <button class="active" data-admin-tab="overview"><span>⌂</span>DASHBOARD</button>
+   <button data-admin-tab="products"><span>◫</span>MANAGE PRODUCTS</button>
+   <button id="adminAddProduct" type="button" data-admin-tab="products"><span>＋</span>ADD PRODUCT</button>
+   <button data-admin-tab="orders"><span>▱</span>ORDERS</button>
+   <button data-admin-tab="customers"><span>♧</span>CUSTOMERS</button>
+   <button data-admin-tab="promos"><span>%</span>PROMOS</button>
+   <button data-admin-tab="merch"><span>◇</span>MERCH CATALOG</button>
+   <button data-admin-tab="design"><span>⚙</span>SETTINGS</button>
+   <button class="side-logout" data-action="logout"><span>↪</span>LOGOUT</button>
+  </div>
+  <div class="admin-side-foot"><span>SA1NT / CONTROL</span><b>● SYSTEM ONLINE</b></div>
+ </aside>
+ <main class="admin-main">
+  <header class="admin-topbar"><div class="admin-title-wrap"><button id="adminMenuBtn" class="admin-menu-btn" type="button" aria-label="Open admin navigation" aria-expanded="false">☰</button><span>ADMIN PANEL</span><strong id="adminPageTitle">Dashboard</strong></div><div class="admin-account"><span id="adminAccountEmail">saintmotorcycleparts@gmail.com</span><small>Admin</small><button class="admin-avatar" data-close="adminDashboard">◉</button></div></header>
+
+  <section id="adminOverview" class="admin-tab">
+   <div class="admin-section-title"><div><span>SA1NT / INTERNAL MARKETPLACE</span><h2>Dashboard</h2></div><div class="admin-live">● LIVE SYSTEM</div></div>
+   <div class="kpis admin-kpis"><div><span class="kpi-icon">▣</span><small>TOTAL PRODUCTS</small><b id="kpiProducts">0</b></div><div><span class="kpi-icon">⌁</span><small>TOTAL ORDERS</small><b id="kpiOrders">0</b></div><div><span class="kpi-icon">♧</span><small>TOTAL CUSTOMERS</small><b id="kpiUsers">0</b></div><div><span class="kpi-icon">₱</span><small>SALES REVENUE</small><b id="kpiRevenue">₱0</b></div></div>
+   <div class="admin-overview-grid">
+    <div class="panel admin-chart-panel"><div class="panel-title"><h3>SALES OVERVIEW</h3><span>LAST 12 MONTHS</span></div><div class="sales-chart" id="salesBars"></div><div class="chart-axis"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div></div>
+    <div class="panel recent-panel"><div class="panel-title"><h3>RECENT ORDERS</h3><button class="mini-btn" data-admin-tab="orders">VIEW ALL</button></div><div id="adminRecentOrders"></div></div>
+   </div>
+   <div class="admin-quick-grid"><button class="admin-quick" data-admin-tab="products"><b>MANAGE PRODUCTS</b><span>Edit stock, pricing, images and badges →</span></button><button class="admin-quick" id="adminQuickAdd" type="button"><b>ADD PRODUCT</b><span>Create a new marketplace listing →</span></button><button class="admin-quick" data-admin-tab="design"><b>SETTINGS</b><span>Open the SA1NT Design Studio →</span></button></div>
+  </section>
+
+  <section id="adminProducts" class="admin-tab hidden">
+   <div class="admin-section-title"><div><span>CATALOG CONTROL</span><h2>Manage Products</h2></div><button class="btn primary" id="addProduct">+ ADD PRODUCT</button></div>
+   <div class="panel"><div class="panel-title"><div><h3>PRODUCT INVENTORY</h3><p class="subtle">Admin creates every item, price, image and stock value.</p></div><span class="admin-module-status">CATALOG ACTIVE</span></div><div id="inventory"></div></div>
+  </section>
+
+  <section id="adminOrders" class="admin-tab hidden"><div class="admin-section-title"><div><span>FULFILLMENT CONTROL</span><h2>Orders</h2></div></div><div class="panel"><div class="panel-title"><div><h3>ORDER QUEUE</h3><p class="subtle">Orders created by authenticated riders appear here.</p></div></div><div id="adminOrdersList"></div></div></section>
+
+  <section id="adminCustomers" class="admin-tab hidden"><div class="admin-section-title"><div><span>RIDER DATABASE</span><h2>Customers</h2></div></div><div class="panel"><h3>RIDER DATABASE</h3><div id="adminCustomersList"></div></div></section>
+
+  <section id="adminMerch" class="admin-tab hidden">
+   <div class="admin-section-title"><div><span>SA1NT LIFESTYLE CONTROL</span><h2>Merch Catalog</h2></div><button class="btn primary" id="addMerch">+ NEW MERCH DROP</button></div>
+   <div class="panel"><div class="panel-title"><div><h3>PUBLISHED MERCH</h3><p class="subtle">Publish apparel, headwear and accessories without mixing them into the motorcycle-parts inventory.</p></div></div><div id="adminMerchList"></div></div>
+  </section>
+
+<section id="adminDesign" class="admin-tab hidden">
+   <div class="admin-section-title"><div><span>SA1NT SITE CONTROL</span><h2>Settings</h2></div></div>
+   <div class="panel design-studio">
+    <div class="panel-title"><div><h3>DESIGN STUDIO</h3><p class="subtle">Customize the public SA1NT homepage. Changes preview live and publish to the server for every visitor.</p></div><div class="design-actions"><button class="mini-btn" id="presetRace">RACE RED</button><button class="mini-btn" id="presetStealth">STEALTH</button><button class="mini-btn" id="presetWhite">WHITE ATTACK</button></div></div>
+    <form id="customizerForm" class="customizer-grid">
+     <div class="customizer-card"><h4>THEME COLORS</h4><div class="color-grid"><label>BACKGROUND<input id="theme_bg" type="color"></label><label>PANEL<input id="theme_panel" type="color"></label><label>PANEL 2<input id="theme_panel2" type="color"></label><label>LINES<input id="theme_line" type="color"></label><label>TEXT<input id="theme_text" type="color"></label><label>MUTED<input id="theme_muted" type="color"></label><label>ACCENT<input id="theme_accent" type="color"></label><label>RACING RED<input id="theme_red" type="color"></label></div></div>
+     <div class="customizer-card"><h4>BRANDING & HERO</h4><label>BRAND NAME<input id="siteBrand" placeholder="SA1NT"></label><label>TAGLINE<input id="siteTagline" placeholder="RACING MARKETPLACE"></label><label>HERO LABEL<input id="heroTag"></label><label>HERO TITLE<input id="heroTitle"></label><label>HERO ACCENT<input id="heroAccent"></label><label>HERO DESCRIPTION<textarea id="heroDescription"></textarea></label><label>HERO IMAGE URL<input id="heroImage" placeholder="https://.../hero-bike.webp"></label></div>
+     <div class="customizer-card"><h4>PUBLIC SECTIONS</h4><label class="check"><input id="show_deals" type="checkbox"> SHOW DEALS</label><label class="check"><input id="show_merch" type="checkbox"> SHOW MERCH CATALOG</label><label class="check"><input id="show_garage" type="checkbox"> SHOW GARAGE</label><label class="check"><input id="show_contact" type="checkbox"> SHOW CONTACT / NEWSLETTER</label><label>RACE STRIP TEXT<textarea id="raceStrip"></textarea></label><label>FOOTER TEXT<textarea id="footerText"></textarea></label></div>
+     <div class="customizer-card"><h4>VISUAL EFFECTS</h4><label class="check"><input id="fx_grain" type="checkbox"> FILM GRAIN</label><label class="check"><input id="fx_telemetry" type="checkbox"> RACE TELEMETRY</label><label class="check"><input id="fx_heroLines" type="checkbox"> HERO GRID LINES</label><label class="check"><input id="fx_threeD" type="checkbox"> 3D / TILT EFFECTS</label><p class="subtle">3D toggle controls the public visual treatment; the racing engine stays lightweight and browser-native.</p></div>
+     <div class="customizer-card wide"><h4>ADVANCED CUSTOM CSS</h4><textarea id="customCss" class="css-editor" placeholder="/* Optional advanced CSS */
+.hero h1 { letter-spacing:-6px; }"></textarea><p class="subtle">For advanced admins. CSS is applied to the public page after the built-in theme.</p></div>
+     <div class="form-actions wide"><button type="button" class="btn outline" id="resetSiteSettings">RESET PREVIEW</button><button type="button" class="btn primary" id="saveSiteSettings">PUBLISH SITE DESIGN →</button></div>
+    </form>
+   </div>
+  </section>
+
+  <section id="adminPromos" class="admin-tab hidden"><div class="admin-section-title"><div><span>CAMPAIGN CONTROL</span><h2>Promos</h2></div></div><div class="panel"><div class="panel-title"><div><h3>PROMO ENGINE</h3><p class="subtle">Create vouchers for marketplace-style campaigns.</p></div><button class="btn primary" id="addPromo">+ ADD PROMO</button></div><div id="promoList"></div></div></section>
+ </main>
+</div></div>
+
+<!-- MERCH EDITOR -->
+<div class="modal" id="merchEditor"><div class="editor-panel small">
+ <button class="modal-close" data-close="merchEditor">×</button>
+ <div class="dash-head"><div><label>ADMIN / LIFESTYLE CATALOG</label><h2>NEW <i>MERCH DROP.</i></h2></div></div>
+ <form id="merchForm" class="editor-fields">
+   <label>ITEM NAME<input id="merchName" required placeholder="e.g. SA1NT RACING TEE"></label>
+   <label>PRICE (PHP)<input id="merchPrice" type="number" min="0" step="0.01" required placeholder="0.00"></label>
+   <label>CATEGORY<select id="merchCategory"><option value="apparel">APPAREL</option><option value="headwear">HEADWEAR</option><option value="accessories">ACCESSORIES</option></select></label>
+   <label>STOCK<input id="merchStock" type="number" min="0" value="0" required></label>
+   <label>BADGE<input id="merchBadge" placeholder="NEW / DROP / LIMITED"></label>
+   <label>IMAGE URL<input id="merchImage" placeholder="https://.../merch.jpg"></label>
+   <label>DESCRIPTION<textarea id="merchDescription" placeholder="Material, fit, rider details..."></textarea></label>
+   <div class="form-actions"><button type="button" class="btn outline" data-close="merchEditor">CANCEL</button><button class="btn primary" type="submit">PUBLISH DROP →</button></div>
+ </form>
+</div></div>
+
+<!-- PRODUCT EDITOR -->
+<div class="modal" id="productEditor"><div class="editor-panel">
+ <button class="modal-close" data-close="productEditor">×</button>
+ <div class="dash-head"><div><label>ADMIN / CATALOG EDITOR</label><h2><span id="editorMode">ADD</span> <i>PRODUCT.</i></h2></div></div>
+ <form id="productForm" class="editor-grid">
+   <input type="hidden" id="productId">
+   <div class="upload-box"><input id="productImage" type="file" accept="image/*"><div id="imagePreview" class="imagePreview"><span>UPLOAD PRODUCT IMAGE</span><small>PNG / JPG / WEBP</small></div></div>
+   <div class="editor-fields">
+     <label>PRODUCT NAME<input id="productName" required placeholder="e.g. GP RACING EXHAUST"></label>
+     <label>PRICE (PHP)<input id="productPrice" type="number" min="0" step="0.01" required placeholder="0.00"></label>
+     <label>CATEGORY<select id="productCategory"><option>Engine</option><option>Braking</option><option>Controls</option><option>Protection</option><option>Electrical</option><option>Accessories</option></select></label>
+     <label>STOCK<input id="productStock" type="number" min="0" required placeholder="0"></label>
+     <label>SALE PRICE (OPTIONAL)<input id="productSale" type="number" min="0" step="0.01" placeholder="Leave blank for regular price"></label>
+     <label>BADGE<input id="productBadge" placeholder="NEW / HOT / PRO / LIMITED"></label>
+     <label class="wide">DESCRIPTION<textarea id="productDescription" placeholder="Product details, fitment, material, features..."></textarea></label>
+     <label class="check wide"><input id="productFeatured" type="checkbox"> FEATURE THIS PRODUCT</label>
+     <div class="form-actions wide"><button type="button" class="btn outline" data-close="productEditor">CANCEL</button><button class="btn primary" type="submit">SAVE PRODUCT →</button></div>
+   </div>
+ </form>
+</div></div>
+
+<!-- PROMO EDITOR -->
+<div class="modal" id="promoEditor"><div class="editor-panel small">
+ <button class="modal-close" data-close="promoEditor">×</button>
+ <div class="dash-head"><div><label>ADMIN / PROMO ENGINE</label><h2>NEW <i>VOUCHER.</i></h2></div></div>
+ <form id="promoForm" class="editor-fields">
+   <label>CODE<input id="promoCode" required placeholder="e.g. RACE10"></label>
+   <label>DISCOUNT %<input id="promoDiscount" type="number" min="1" max="90" required></label>
+   <label>MINIMUM SPEND<input id="promoMin" type="number" min="0" value="0"></label>
+   <label class="check"><input id="promoActive" type="checkbox" checked> ACTIVE</label>
+   <div class="form-actions"><button type="button" class="btn outline" data-close="promoEditor">CANCEL</button><button class="btn primary" type="submit">PUBLISH PROMO →</button></div>
+ </form>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/intro.js?v=20261009"></script>
+<script src="js/merch.js?v=20261009"></script>
+<script type="module" src="js/main.js?v=20261009-mobile"></script>
+</body>
+</html>

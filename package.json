@@ -1,0 +1,21 @@
+{
+  "name": "sa1nt-motorcycle-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "start": "node server/src/server.js",
+    "dev": "node --watch server/src/server.js",
+    "check": "node --check server/src/server.js && node --check server/src/auth.js && node --check server/src/db.js && node --check server/src/products.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0"
+  }
+}
